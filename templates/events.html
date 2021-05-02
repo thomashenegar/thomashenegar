@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    {% load static %}
+    <title>Hollymavity Ceramics</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://img.icons8.com/ios-glyphs/30/000000/pottery-workshop.png"/>
+    <link rel="stylesheet" href="{% static 'shop.css' %}">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <p class="links"><a href="/">Home</a> | <a href="/shop">Shop</a> | <a href="/aboutmeandcontact">About Me and Contact Info</a> | <a href="/events">Events</a></p>
+            <h1>Holly Mavity Pottery</h1>
+        </div>
+        <div class="parallax">
+            <div class="row">
+                <div class="col">
+                    <h2>Events</h2>
+                    <p>Check out these events happening soon! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <h2>Contact Info</h2>
+                    <p>I can be reached at (706) 999-9999 (call or text) or at <a href="mailto:someone@example.com">h@v.com</a>!</p>
+                </div>
+                <div class="col">
+                <div id='map' style='width: 400px; height: 300px;'></div>
+                <script>
+                    mapboxgl.accessToken = 'pk.eyJ1IjoidGhvbWFzaGVuZWdhciIsImEiOiJja24waWt6bTkwZGgzMm5xcHF1d3g1NTBtIn0.0Dtq_vcfI2gIsJpiVMHC3w';
+                    var map = new mapboxgl.Map({
+                        container: 'map',
+                        style: 'mapbox://styles/mapbox/streets-v11'
+                    });
+                </script>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <a href="https://www.instagram.com/hollymavity_ceramics/"><img class="IG" style="width: 100px;" src="{% static 'images/instagramlogo.png'%}" alt="IGLogo"></a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'adminportal.css' %}">
+    <title>Admin</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://img.icons8.com/ios-glyphs/30/000000/pottery-workshop.png"/>
+</head>
+<body>
+    <div class="wrapper" style="margin-top: 20px;">
+        <div class="header">
+            <p class="links"><a href="/">Home</a> | <a href="/shop">Shop</a> | <a href="/aboutmeandcontact">About Me and Contact Info</a> | <a href="/events">Events</a></p>
+            <h1>Holly Mavity Pottery</h1>
+        </div>
+        <h1 style="color: black;">Welcome, Holly! Let's manage your site!</h1>
+        <h2>User portal will go here so you can easily change product pictures, names, and prices.</h2>
+        <div id="smart-button-container">
+            <div style="text-align: center;">
+                <div id="paypal-button-container"></div>
+            </div>
+        <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD" data-sdk-integration-source="button-factory"></script>
+        <script>
+        function initPayPalButton() {
+            paypal.Buttons({
+                style: {
+                shape: 'rect',
+                color: 'gold',
+                layout: 'vertical',
+                label: 'paypal',
+                },
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                purchase_units: [{"description":"Pottery","amount":{"currency_code":"USD","value":53.99,"breakdown":{"item_total":{"currency_code":"USD","value":49.99},"shipping":{"currency_code":"USD","value":0},"tax_total":{"currency_code":"USD","value":4}}}}]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                });
+            },
+            onError: function(err) {
+                console.log(err);
+            }
+            }).render('#paypal-button-container');
+        }
+        initPayPalButton();
+        </script>
+        </div>
+        <a href="https://www.instagram.com/hollymavity_ceramics/"><img class="IG" src="{% static 'images/instagramlogo.png'%}" alt="IGLogo"></a>
+    </div>
+</body>
+</html>
